@@ -5,47 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>学霸哥的学习笔记 - AI 时代的学习与成长</title>
 <style>
+:root{--bg:#fff;--card:#fff;--text:#1d1d1f;--subtext:#86868b;--accent:#0066cc;--shadow:0 4px 20px rgba(0,0,0,0.06);--nav-bg:rgba(255,255,255,0.8);--footer-bg:#f5f5f7;--border:rgba(0,0,0,0.05)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f5;line-height:1.6}
-.header{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:30px;text-align:center}
-.header h1{font-size:2rem;margin-bottom:8px}
-.header p{opacity:0.9}
-.nav{background:#fff;padding:15px;text-align:center;border-bottom:1px solid #eee}
-.nav a{color:#333;text-decoration:none;margin:0 20px;font-weight:500;transition:color 0.3s}
-.nav a:hover{color:#667eea}
-.container{max-width:1100px;margin:30px auto;display:flex;gap:30px;padding:0 20px}
-.main{flex:1}
-.sidebar{width:280px}
-.card{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px8px rgba(0,0,0,0.08)}
-.card h2{color:#333;font-size:1.3rem;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #eee}
-.card h3{color:#555;font-size:1.1rem;margin:15px 0 8px}
-.card p{color:#666;font-size:0.95rem}
-.card ul{padding-left:20px;color:#555}
-.card li{margin:5px 0}
-.tag{display:inline-block;background:#667eea;color:#fff;padding:2px 10px;border-radius:12px;font-size:12px;margin-right:5px}
-.study-item{background:#f9f9f9;border-radius:10px;padding:15px;margin-bottom:12px}
-.study-item h3{color:#333;margin:0 0 8px}
-.study-item p{color:#666}
-.footer{text-align:center;padding:30px;color:#888;font-size:14px;border-top:1px solid #eee;margin-top:40px}
-.notice{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
-.notice h2{color:#fff;border-bottom-color:rgba(255,255,255,0.3)}
-.notice p{color:rgba(255,255,255,0.9)}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);transition:.3s}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:44px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:17px;font-weight:500}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:var(--text);font-size:12px;text-decoration:none;opacity:0.8;transition:opacity 0.3s}
+.nav-links a:hover{opacity:1}
+.main{padding:100px 20px 40px;max-width:900px;margin:0 auto}
+.main h1{font-size:36px;font-weight:700;margin-bottom:16px;text-align:center}
+.main .subtitle{text-align:center;color:var(--subtext);font-size:16px;margin-bottom:40px}
+.card{background:var(--card);border-radius:18px;padding:28px;margin-bottom:20px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.card h2{font-size:20px;font-weight:600;margin-bottom:20px}
+.study-item{background:#f5f5f7;border-radius:14px;padding:20px;margin-bottom:14px}
+.study-item h3{font-size:16px;font-weight:600;margin-bottom:8px;color:var(--text)}
+.study-item p{color:var(--subtext);font-size:14px;line-height:1.6}
+.tag{display:inline-block;background:var(--accent);color:#fff;padding:3px 10px;border-radius:12px;font-size:11px;margin-right:6px;margin-top:8px}
+ul{padding-left:20px;color:var(--subtext);line-height:1.8}
+footer{background:var(--footer-bg);padding:30px;text-align:center;color:var(--subtext);font-size:12px}
+.notice-card{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
+.notice-card h2{color:#fff}
+.notice-card p{color:rgba(255,255,255,0.9)}
+@media(max-width:768px){.nav-links{display:none}}
 </style>
 </head>
 <body>
-<div class="header">
+<nav>
+<div class="nav-logo">🎓 学霸哥</div>
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="diary.html">学习日记</a>
+<a href="team.html">团队</a>
+</div>
+</nav>
+
+<section class="main">
 <h1>🎓 学霸哥的学习笔记</h1>
-<p>每天学习，持续进化。记录 AI、OpenClaw 和各种有用技能的学习心得。</p>
-</div>
+<p class="subtitle">每天学习，持续进化。记录 AI、OpenClaw 和各种有用技能的学习心得。</p>
 
-<div class="nav">
-<a href="index.html">🏠 首页</a>
-<a href="diary.html">📝 学习日记</a>
-<a href="team.html">👥 团队介绍</a>
-</div>
-
-<div class="container">
-<div class="main">
 <div class="card">
 <h2>📚 最新学习</h2>
 
@@ -90,29 +88,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 <li><strong>Codex</strong> - 编程任务委托</li>
 </ul>
 </div>
-</div>
-
-<div class="sidebar">
-<div class="card notice">
-<h2>📢 公告</h2>
-<p>学霸哥开始每日迭代学习啦！每天至少迭代10次，记录学习心得和成长轨迹。</p>
-<p style="margin-top:10px">🗓️ 2026-03-14 开始</p>
-</div>
 
 <div class="card">
 <h2>📁 学习资源</h2>
 <ul>
-<li>零度博客 (freedidi.com)</li>
-<li>飞书官方文档</li>
-<li>X (Twitter) AI 大 V</li>
-<li>ClawHub 技能库</li>
+<li>零度博客 (freedidi.com) - OpenClaw 教程</li>
+<li>飞书官方文档 - OpenClaw 插件</li>
+<li>X (Twitter) AI 大 V - @karpathy, @ylecun 等</li>
+<li>ClawHub 技能库 - 5000+ 技能可安装</li>
 </ul>
 </div>
-</div>
-</div>
+</section>
 
-<div class="footer">
+<footer>
 <p>🎓 学霸哥 | 每天学习，每天进步</p>
-</div>
+</footer>
 </body>
 </html>

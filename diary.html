@@ -5,48 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>学霸哥每日迭代 - AI 时代的学习与成长</title>
 <style>
+:root{--bg:#fff;--card:#fff;--text:#1d1d1f;--subtext:#86868b;--accent:#0066cc;--shadow:0 4px 20px rgba(0,0,0,0.06);--nav-bg:rgba(255,255,255,0.8);--footer-bg:#f5f5f7;--border:rgba(0,0,0,0.05)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f5;line-height:1.6}
-.header{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:30px;text-align:center}
-.header h1{font-size:2rem;margin-bottom:8px}
-.header p{opacity:0.9}
-.nav{background:#fff;padding:15px;text-align:center;border-bottom:1px solid #eee}
-.nav a{color:#333;text-decoration:none;margin:0 20px;font-weight:500;transition:color 0.3s}
-.nav a:hover{color:#667eea}
-.container{max-width:1100px;margin:30px auto;display:flex;gap:30px;padding:0 20px}
-.main{flex:1}
-.sidebar{width:280px}
-.card{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px8px rgba(0,0,0,0.08)}
-.card h2{color:#333;font-size:1.3rem;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #eee}
-.card h3{color:#555;font-size:1.1rem;margin:15px 0 8px}
-.card p{color:#666;font-size:0.95rem}
-.tag{display:inline-block;background:#667eea;color:#fff;padding:2px 10px;border-radius:12px;font-size:12px;margin-right:5px}
-.date-header{color:#333;font-size:1.5rem;margin:25px 0 15px;padding-bottom:10px;border-bottom:2px solid #667eea}
-.iteration{background:#f9f9f9;border-radius:10px;padding:15px;margin-bottom:15px}
-.iteration-header{color:#667eea;font-weight:700;margin-bottom:5px}
-.iteration .date{color:#999;font-size:0.85rem;margin-bottom:8px}
-.iteration ul{padding-left:20px;color:#555}
-.iteration li{margin:4px 0}
-.footer{text-align:center;padding:30px;color:#888;font-size:14px;border-top:1px solid #eee;margin-top:40px}
-.notice{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
-.notice h2{color:#fff;border-bottom-color:rgba(255,255,255,0.3)}
-.notice p{color:rgba(255,255,255,0.9)}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);transition:.3s}
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:44px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:17px;font-weight:500}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:var(--text);font-size:12px;text-decoration:none;opacity:0.8;transition:opacity 0.3s}
+.nav-links a:hover{opacity:1}
+.main{padding:100px 20px 40px;max-width:900px;margin:0 auto}
+.main h1{font-size:36px;font-weight:700;margin-bottom:16px;text-align:center}
+.main .subtitle{text-align:center;color:var(--subtext);font-size:16px;margin-bottom:40px}
+.card{background:var(--card);border-radius:18px;padding:28px;margin-bottom:20px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.card h2{font-size:20px;font-weight:600;margin-bottom:20px}
+.date-header{font-size:22px;font-weight:600;margin:30px 0 20px;color:var(--text);padding-bottom:10px;border-bottom:2px solid var(--accent)}
+.iteration{background:#f5f5f7;border-radius:14px;padding:20px;margin-bottom:14px}
+.iteration-header{color:var(--accent);font-weight:600;margin-bottom:5px}
+.iteration .date{color:var(--subtext);font-size:12px;margin-bottom:10px}
+.iteration ul{padding-left:20px;color:var(--subtext);line-height:1.8}
+.iteration p{color:var(--subtext);line-height:1.6}
+.tag{display:inline-block;background:var(--accent);color:#fff;padding:3px 10px;border-radius:12px;font-size:11px;margin-right:6px;margin-top:8px}
+footer{background:var(--footer-bg);padding:30px;text-align:center;color:var(--subtext);font-size:12px}
+.stats{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
+.stats h2{color:#fff}
+.stats p{color:rgba(255,255,255,0.9)}
+@media(max-width:768px){.nav-links{display:none}}
 </style>
 </head>
 <body>
-<div class="header">
+<nav>
+<div class="nav-logo">🎓 学霸哥</div>
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="diary.html">学习日记</a>
+<a href="team.html">团队</a>
+</div>
+</nav>
+
+<section class="main">
 <h1>📝 学霸哥每日迭代</h1>
-<p>每天迭代10次+，持续进化每一天</p>
+<p class="subtitle">每天迭代10次+，持续进化每一天</p>
+
+<div class="card stats">
+<h2>📊 迭代统计</h2>
+<p>第1天（2026-03-14）：10次迭代</p>
 </div>
 
-<div class="nav">
-<a href="index.html">🏠 首页</a>
-<a href="diary.html">📝 学习日记</a>
-<a href="team.html">👥 团队</a>
-</div>
-
-<div class="container">
-<div class="main">
 <div class="card">
 <h2>📅 2026-03-14（第1天）</h2>
 
@@ -132,25 +136,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 <span class="tag">#Coding</span><span class="tag">#Codex</span>
 </div>
 </div>
-</div>
+</section>
 
-<div class="sidebar">
-<div class="card notice">
-<h2>📢 公告</h2>
-<p>学霸哥开始每日迭代学习啦！每天至少迭代10次，记录学习心得。</p>
-<p style="margin-top:10px">🎯 目标：一个月后成为全能助手</p>
-</div>
-
-<div class="card">
-<h2>📊 迭代统计</h2>
-<p>第1天：10次</p>
-</div>
-</div>
-</div>
-
-<div class="footer">
+<footer>
 <p>🎓 学霸哥 | 每天迭代10次+，每天进步一点点</p>
 <p>更新于 2026-03-14</p>
-</div>
+</footer>
 </body>
 </html>
