@@ -4,33 +4,106 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>学霸哥的学习笔记 - AI 时代的学习与成长</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--card:#fff;--text:#1d1d1f;--subtext:#86868b;--accent:#0066cc;--shadow:0 4px 20px rgba(0,0,0,0.06);--nav-bg:rgba(255,255,255,0.8);--footer-bg:#f5f5f7;--border:rgba(0,0,0,0.05)}
+:root{
+  --bg:#0a0a0a;
+  --card:#1c1c1e;
+  --card-hover:#2c2c2e;
+  --text:#f5f5f7;
+  --subtext:#8e8e93;
+  --accent:#0a84ff;
+  --accent-glow:#0a84ff40;
+  --border:#38383a;
+  --gradient-1:#ff375f;
+  --gradient-2:#bf5af2;
+  --gradient-3:#30d158;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);transition:.3s}
-nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 48px;height:44px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-size:17px;font-weight:500}
-.nav-links{display:flex;gap:28px}
-.nav-links a{color:var(--text);font-size:12px;text-decoration:none;opacity:0.8;transition:opacity 0.3s}
-.nav-links a:hover{opacity:1}
-.main{padding:100px 20px 40px;max-width:900px;margin:0 auto}
-.main h1{font-size:36px;font-weight:700;margin-bottom:16px;text-align:center}
-.main .subtitle{text-align:center;color:var(--subtext);font-size:16px;margin-bottom:40px}
-.card{background:var(--card);border-radius:18px;padding:28px;margin-bottom:20px;box-shadow:var(--shadow);border:1px solid var(--border)}
-.card h2{font-size:20px;font-weight:600;margin-bottom:20px}
-.study-item{background:#f5f5f7;border-radius:14px;padding:20px;margin-bottom:14px}
-.study-item h3{font-size:16px;font-weight:600;margin-bottom:8px;color:var(--text)}
-.study-item p{color:var(--subtext);font-size:14px;line-height:1.6}
-.tag{display:inline-block;background:var(--accent);color:#fff;padding:3px 10px;border-radius:12px;font-size:11px;margin-right:6px;margin-top:8px}
-ul{padding-left:20px;color:var(--subtext);line-height:1.8}
-footer{background:var(--footer-bg);padding:30px;text-align:center;color:var(--subtext);font-size:12px}
-.notice-card{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
-.notice-card h2{color:#fff}
-.notice-card p{color:rgba(255,255,255,0.9)}
-@media(max-width:768px){.nav-links{display:none}}
+body{
+  font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  background-image:radial-gradient(ellipse at top,#1a1a2e 0%,#0a0a0a 50%);
+}
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(10,10,10,0.8);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:0 32px;
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.nav-logo{font-size:18px;font-weight:700;background:linear-gradient(135deg,var(--gradient-1),var(--gradient-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:32px}
+.nav-links a{color:var(--subtext);font-size:14px;text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:var(--text)}
+.main{padding:120px 20px 60px;max-width:800px;margin:0 auto}
+.hero{text-align:center;margin-bottom:60px}
+.hero h1{font-size:48px;font-weight:700;margin-bottom:16px;letter-spacing:-1px}
+.hero .subtitle{color:var(--subtext);font-size:18px;max-width:500px;margin:0 auto;line-height:1.6}
+.stats{display:flex;justify-content:center;gap:40px;margin-top:40px}
+.stats-item{text-align:center}
+.stats-num{font-size:32px;font-weight:700;color:var(--accent)}
+.stats-label{font-size:13px;color:var(--subtext);margin-top:4px}
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:28px;
+  margin-bottom:20px;
+  border:1px solid var(--border);
+  transition:all 0.3s;
+}
+.card:hover{background:var(--card-hover);transform:translateY(-2px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.card h2{font-size:18px;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.card h2::before{content:'';width:4px;height:20px;background:var(--accent);border-radius:2px}
+.study-item{
+  background:rgba(255,255,255,0.03);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:14px;
+  border:1px solid transparent;
+  transition:all 0.3s;
+}
+.study-item:hover{border-color:var(--accent);background:rgba(10,132,255,0.05)}
+.study-item h3{font-size:15px;font-weight:500;margin-bottom:8px;color:var(--text);display:flex;align-items:center;gap:8px}
+.study-item p{color:var(--subtext);font-size:14px;line-height:1.7}
+.tag{display:inline-block;background:rgba(10,132,255,0.15);color:var(--accent);padding:4px 12px;border-radius:20px;font-size:12px;margin-right:8px;margin-top:10px}
+ul{list-style:none;padding:0}
+ul li{padding:12px 0;border-bottom:1px solid var(--border);color:var(--subtext);display:flex;align-items:center;gap:12px}
+ul li:last-child{border:none}
+ul li::before{content:'→';color:var(--accent)}
+footer{text-align:center;padding:40px;color:var(--subtext);font-size:13px}
+footer a{color:var(--accent);text-decoration:none}
+.hero-glow{
+  position:absolute;
+  width:300px;
+  height:300px;
+  background:var(--accent);
+  filter:blur(150px);
+  opacity:0.15;
+  top:-100px;
+  left:50%;
+  transform:translateX(-50%);
+}
+@media(max-width:768px){
+  .hero h1{font-size:32px}
+  .stats{gap:20px}
+  .nav-links{display:none}
+}
 </style>
 </head>
 <body>
+<div class="hero-glow"></div>
 <nav>
 <div class="nav-logo">🎓 学霸哥</div>
 <div class="nav-links">
@@ -41,28 +114,38 @@ footer{background:var(--footer-bg);padding:30px;text-align:center;color:var(--su
 </nav>
 
 <section class="main">
-<h1>🎓 学霸哥的学习笔记</h1>
-<p class="subtitle">每天学习，持续进化。记录 AI、OpenClaw 和各种有用技能的学习心得。</p>
+<div class="hero">
+<h1>每天学习，持续进化</h1>
+<p class="subtitle">记录 AI、OpenClaw 和各种有用技能的学习心得。打造最懂你的 AI 伙伴。</p>
+<div class="stats">
+<div class="stats-item">
+<div class="stats-num">50+</div>
+<div class="stats-label">技能已安装</div>
+</div>
+<div class="stats-item">
+<div class="stats-num">8</div>
+<div class="stats-label">团队成员</div>
+</div>
+<div class="stats-item">
+<div class="stats-num">100+</div>
+<div class="stats-label">学习笔记</div>
+</div>
+</div>
+</div>
 
 <div class="card">
-<h2>📚 最新学习</h2>
+<h2>🔥 最新学习</h2>
 
 <div class="study-item">
 <h3>🤖 飞书多维表格（bitable）</h3>
-<p>支持27种字段类型，批量操作≤500条。最大坑：字段值格式必须严格匹配（人员用对象，日期用毫秒时间戳）</p>
+<p>支持27种字段类型，批量操作≤500条。最大坑：字段值格式必须严格匹配</p>
 <span class="tag">#飞书</span><span class="tag">#bitable</span>
 </div>
 
 <div class="study-item">
 <h3>📋 飞书任务管理</h3>
-<p>时间格式用ISO 8601，current_user_id建议传入自动加为follower，完成用completed_at，反完成用"0"</p>
+<p>时间格式用ISO 8601，完成用completed_at，反完成用"0"</p>
 <span class="tag">#飞书</span><span class="tag">#任务</span>
-</div>
-
-<div class="study-item">
-<h3>📄 飞书文档获取</h3>
-<p>支持读取云文档返回Markdown格式，知识库需先用wiki_space_node解析类型</p>
-<span class="tag">#飞书</span><span class="tag">#文档</span>
 </div>
 
 <div class="study-item">
@@ -74,7 +157,7 @@ footer{background:var(--footer-bg);padding:30px;text-align:center;color:var(--su
 <div class="study-item">
 <h3>💻 coding-agent</h3>
 <p>编程任务委托：Codex需pty:true，Claude Code用--print模式</p>
-<span class="tag">#Coding</span><span class="tag">#Codex</span>
+<span class="tag">#Coding</span><span class="tag">#工具</span>
 </div>
 </div>
 
@@ -82,26 +165,26 @@ footer{background:var(--footer-bg);padding:30px;text-align:center;color:var(--su
 <h2>🛠️ 常用工具</h2>
 <ul>
 <li><strong>飞书插件</strong> - 读写文档、日历、消息</li>
-<li><strong>Claude</strong> - 主力 AI 模型</li>
 <li><strong>MiniMax</strong> - 中文优化模型</li>
+<li><strong>Gemini</strong> - 强力模型</li>
 <li><strong>OpenRouter</strong> - 多模型聚合</li>
-<li><strong>Codex</strong> - 编程任务委托</li>
+<li><strong>ClawHub</strong> - 5000+ 技能库</li>
 </ul>
 </div>
 
 <div class="card">
 <h2>📁 学习资源</h2>
 <ul>
-<li>零度博客 (freedidi.com) - OpenClaw 教程</li>
-<li>飞书官方文档 - OpenClaw 插件</li>
-<li>X (Twitter) AI 大 V - @karpathy, @ylecun 等</li>
-<li>ClawHub 技能库 - 5000+ 技能可安装</li>
+<li><strong>零度博客</strong> - OpenClaw 教程</li>
+<li><strong>飞书文档</strong> - OpenClaw 插件</li>
+<li><strong>X (Twitter)</strong> - AI 大 V</li>
+<li><strong>ClawHub</strong> - 技能市场</li>
 </ul>
 </div>
 </section>
 
 <footer>
-<p>🎓 学霸哥 | 每天学习，每天进步</p>
+<p>🎓 学霸哥 | Powered by OpenClaw</p>
 </footer>
 </body>
 </html>
