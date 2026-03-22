@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>别急着堆 Agent：我最近对 OpenClaw 体系的三点收束</title>
+  <meta name="description" content="最近这轮迭代里，我把注意力从“再加几个 agent / skill”，收回到角色边界、skill 分层和 Heartbeat 学习闭环。真正让系统稳定的，不是数量，而是结构。" />
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;max-width:760px;margin:0 auto;padding:48px 20px;line-height:1.85;color:#1f2937;background:#fff}
+    h1,h2,h3{line-height:1.35;color:#111827}
+    h1{font-size:2.2rem;margin-bottom:8px}
+    h2{margin-top:40px;font-size:1.5rem}
+    h3{margin-top:26px;font-size:1.15rem}
+    .meta{color:#6b7280;font-size:.95rem;margin-bottom:32px}
+    blockquote{border-left:4px solid #d1d5db;padding-left:16px;color:#374151;margin:20px 0}
+    code{background:#f3f4f6;padding:2px 6px;border-radius:6px}
+    a{color:#2563eb;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .back{display:inline-block;margin-top:48px}
+  </style>
+</head>
+<body>
+  <article>
+    <h1>别急着堆 Agent：我最近对 OpenClaw 体系的三点收束</h1>
+    <div class="meta">2026-03-22 · AI / Agent / OpenClaw</div>
+
+    <p>最近这轮折腾，我有一个很强的感觉：</p>
+    <p><strong>很多 AI 系统不是能力不够，而是结构太松。</strong></p>
+    <p>一开始很容易兴奋。看到一个新 skill，想接；看到一种多 agent 协作方式，想抄；看到一个自动化流程跑通了，就觉得体系快成了。</p>
+    <p>但跑几轮后会发现，真正让系统变乱的，通常不是“不会做”，而是这几个问题一直没写清楚：</p>
+    <ul>
+      <li>谁负责判断，谁负责执行</li>
+      <li>哪些能力属于通用底座，哪些属于业务流程</li>
+      <li>哪些动作可以自动下放，哪些必须卡住</li>
+      <li>Heartbeat 到底是在报平安，还是在推动系统进化</li>
+    </ul>
+    <p>我最近把思路收回来，最后压成了三个判断。</p>
+
+    <h2>1. 主 agent 不该什么都做，它该主要负责编排</h2>
+    <p>这是这轮最重要的收束。</p>
+    <p>过去很容易默认一个强 agent 什么都能干：理解任务、查资料、写文案、改代码、发消息、更新文档、做巡检。短期看很爽，长期看一定失控。</p>
+    <p>因为一旦所有事都塞进主 agent，系统很快就会出现三个问题：</p>
+
+    <h3>第一，判断和执行混在一起</h3>
+    <p>主 agent 一边决定方向，一边亲自做大量体力活，最后最容易丢的是“边界判断”。</p>
+    <p>它本来应该问：</p>
+    <ul>
+      <li>这个任务该不该做</li>
+      <li>该谁做</li>
+      <li>风险在哪</li>
+      <li>做完怎么验收</li>
+    </ul>
+    <p>结果它花了大量时间在：看十篇资料、改三轮文案、手工跑流程、自己补各种细碎动作。主控一旦变重，编排能力就会变弱。</p>
+
+    <h3>第二，子角色永远长不出来</h3>
+    <p>如果主 agent 总能“顺手自己干完”，那研究、写作、运营、编程这些角色永远不会真的成型。</p>
+    <p>因为角色不是靠命名长出来的，是靠<strong>明确职责 + 可执行边界 + 稳定输入输出</strong>长出来的。</p>
+
+    <h3>第三，错误会被一起放大</h3>
+    <p>当“理解目标、选路径、做执行、发结果”都由一个角色包办时，任何一次判断偏差，都会直接流到外部动作上。</p>
+    <blockquote>主 agent 的核心价值不是更能干，而是更会编排。</blockquote>
+    <p>它应该主要负责：理解目标、任务拆解、角色调度、风险控制、最终验收，而不是默认亲自把所有活干完。</p>
+
+    <h2>2. Skill 体系先别继续堆，先分三层</h2>
+    <p>我后来越来越不喜欢“看到一个需求就加一个 skill”这种节奏。因为这样做，短期像在扩能力，长期其实是在扩混乱。</p>
+    <p>更稳的办法，是先把 skill 分成三层。</p>
+
+    <h3>第一层：通用底座 / 基础能力</h3>
+    <p>这一层解决的是“很多任务都会反复遇到”的共性问题，比如搜索、浏览网页、总结文档、读写文件、记忆检索、会话调度。它们不是某个业务独有的，而是很多业务都会反复调用的部件。</p>
+    <p>这一层最重要的不是“多”，而是“稳”。</p>
+
+    <h3>第二层：业务能力</h3>
+    <p>这一层才是面向具体结果的，比如飞书日历管理、飞书任务流、热点监控日报、文档生成与更新。用户真正要的，通常不是“调用一个 summarize”，而是“帮我把日报做出来”。</p>
+    <p>所以业务层的重点不是单工具，而是<strong>流程是否稳定、输入输出是否清楚、能否被编排复用</strong>。</p>
+
+    <h3>第三层：社区扩展能力</h3>
+    <p>这一层我现在会更克制。它适合放个性化很强的写作风格 skill、某个平台特化发布器、外部仓库迁来的实验型流程、不属于核心必需但值得尝试的能力。</p>
+    <p>这层不是不要，而是不能跟底座和业务混在一起。否则很快会出现一种假繁荣：skill 越来越多，但你越来越不知道哪个该给谁用，哪个只是实验品，哪个应该进主链路。</p>
+    <blockquote>先分层，再扩张；先归类，再接入。</blockquote>
+
+    <h2>3. Heartbeat 最有价值的地方，不是提醒，是逼系统学习</h2>
+    <p>以前看 Heartbeat，很容易把它理解成定时问一句还好吗、看下有没有新消息、查下任务有没有跑。这当然有用，但不够。</p>
+    <p>如果 Heartbeat 只负责“巡检”，它最多是个提醒器；如果它还能负责“学习 + 沉淀 + 验证”，它才开始像系统进化接口。</p>
+    <p>我现在更倾向于把 Heartbeat 固定成四步：</p>
+    <ul>
+      <li><strong>先巡检</strong>：看关键流程有没有漏跑、异常、输出变差、该补跑的任务</li>
+      <li><strong>再学习</strong>：只看一小块和当前主线高度相关的输入</li>
+      <li><strong>必须沉淀</strong>：没有进入文档、模板、规则、记忆，就不算完成</li>
+      <li><strong>最后验证</strong>：这次调整怎么知道有效？下次用什么真实任务验证？两轮没反馈是不是该停掉？</li>
+    </ul>
+    <p>很多“抽象优化”最容易自嗨的地方就在这：看起来想明白了，但系统没有任何变好证据。</p>
+    <blockquote>Heartbeat 的价值，不是定时 ping，而是“巡检系统状态 + 推动结构进化的小闭环”。</blockquote>
+
+    <h2>最后，我现在对这套体系的判断</h2>
+    <p>如果让我把最近的感悟压成最短的一版，就是下面三句：</p>
+    <ul>
+      <li><strong>主 agent 要收回到“编排官”</strong>：最重要的工作不是多做，而是少做错事、少做重活、把边界守住。</li>
+      <li><strong>Skill 要先分层，不要继续散装增长</strong>：底座、业务、扩展三层一旦不分，系统后面一定会越来越糊。</li>
+      <li><strong>Heartbeat 要从“提醒器”升级成“学习闭环”</strong>：真正的价值不在于它多久响一次，而在于它有没有逼系统留下规则、模板和反馈。</li>
+    </ul>
+    <p>我现在反而没那么急着继续加 agent 了。先把角色边界、skill 分层、调度矩阵和 heartbeat 模板跑顺，很多复杂度会自己降下来。</p>
+    <p><strong>多 agent 从来不是自动增强器。基础没打稳时，它更像混乱倍增器。</strong></p>
+    <p>先把结构搭稳，再谈扩张。</p>
+
+    <p><a class="back" href="/posts.html">← 返回文章列表</a></p>
+  </article>
+</body>
+</html>
